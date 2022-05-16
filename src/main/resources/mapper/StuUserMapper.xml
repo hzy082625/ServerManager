@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rgobj.generalproblemdemo.mapper.StuUserMapper">
+    <delete id="delete">
+               DELETE from stu_user where username = #{username}
+    </delete>
+
+    <select id="queryAll" resultType="com.rgobj.generalproblemdemo.bean.StuUserBean">
+                SELECT * from stu_user
+        </select>
+
+    <insert id="add" parameterType="com.rgobj.generalproblemdemo.bean.StuUserBean">
+                insert into stu_user values (#{username},#{password},#{name})
+        </insert>
+
+    <select id="queryByName" resultType="com.rgobj.generalproblemdemo.bean.StuUserBean">
+                SELECT  * from stu_user where username = #{username}
+    </select>
+
+    <select id="loginCheck" resultType="com.rgobj.generalproblemdemo.bean.StuUserBean">
+                SELECT * from stu_user where username = #{username} and password = #{password}
+    </select>
+
+    <select id="query" resultType="com.rgobj.generalproblemdemo.bean.StuUserBean">
+                SELECT * from stu_user where username = #{username}
+    </select>
+
+    <update id="update">
+                update stu_user set password = #{password}, name = #{name} where username = #{username}
+    </update>
+
+</mapper>

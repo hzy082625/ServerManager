@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rgobj.generalproblemdemo.mapper.ProjectMapper">
+    <insert id="addInfo" parameterType="com.rgobj.generalproblemdemo.bean.ProjectBean">
+        insert into project (name, time, content, price, detail, freelance, customer)
+        values (#{name}, #{time}, #{content}, #{price}, #{detail}, #{freelance}, #{customer})
+    </insert>
+    <update id="updateInfo" parameterType="com.rgobj.generalproblemdemo.bean.ProjectBean">
+        UPDATE project
+        SET name = #{name},
+            time = #{time}
+        WHERE id = #{id}
+    </update>
+    <update id="updateCustomer" parameterType="com.rgobj.generalproblemdemo.bean.ProjectBean">
+        UPDATE project
+        SET customer = #{name}
+        WHERE id = #{id}
+    </update>
+    <update id="deleteById">
+        UPDATE project
+        SET customer = #{customer}
+        WHERE id = #{id}
+    </update>
+
+    <select id="queryById" resultType="com.rgobj.generalproblemdemo.bean.ProjectBean">
+        SELECT *
+        FROM project
+        WHERE id = #{id}
+    </select>
+    <select id="queryByTeacherUser" resultType="com.rgobj.generalproblemdemo.bean.ProjectBean">
+        SELECT *
+        FROM `project`
+        WHERE freelance = #{freelance}
+    </select>
+    <select id="queryAll" resultType="com.rgobj.generalproblemdemo.bean.ProjectBean">
+        SELECT *
+        FROM project
+    </select>
+    <select id="queryAllCusByName" resultType="com.rgobj.generalproblemdemo.bean.ProjectBean">
+        SELECT *
+        FROM project
+        WHERE customer = #{customer}
+    </select>
+</mapper>
